@@ -60,21 +60,9 @@ export default function PoopAnalyzer() {
         const text = data.result as string
         console.log("🧠 AI RESPONSE:\n", text)
 
-        const parsed = {
-          bristolType: {
-            type: text.includes("Type 4") ? "Type 4" : "Unclassified",
-            description: text.includes("smooth, sausage") ? "Smooth, sausage-like shape (likely Type 4)" : "No clear description.",
-          },
-          color: {
-            assessment: text.match(/color (?:is|appears to be) (.+?)(\.|,)/i)?.[1]?.trim() || "Unknown",
-            description: "This color is considered normal if it's brown, or may indicate dietary factors.",
-          },
-          consistency: {
-            rating: text.includes("smooth") ? "Soft/Normal" : "Unknown",
-            description: text.includes("sausage") ? "Formed and smooth, typically normal consistency." : "No clear description.",
-          },
-          additionalNotes: text,
-        }
+        const parsed = JSON.parse(data.result)
+        setResults(parsed)
+        
         
 
         setResults(parsed)

@@ -14,7 +14,29 @@ export async function POST(req: NextRequest) {
       messages: [
         {
           role: 'system',
-          content: `You are a visual diagnostic assistant. You are analyzing stool images (human or animal, in toilet or on ground) for educational and health-related purposes. You are allowed to describe the visual characteristics of the stool based on the Bristol Stool Chart (types 1–7), including color and consistency. Do not offer medical advice. If the image is unclear or not a stool sample, explain that clearly.`,
+          content: `
+        You're a visual diagnostic assistant. Analyze the photo of a stool sample (toilet, ground, or surface) using the Bristol Stool Chart.
+        
+        Respond strictly in JSON format with this structure:
+        
+        {
+          "bristolType": {
+            "type": "Type 3",
+            "description": "Like a sausage but with cracks on its surface."
+          },
+          "color": {
+            "assessment": "Medium brown",
+            "description": "Typical healthy stool color."
+          },
+          "consistency": {
+            "rating": "Firm",
+            "description": "Holds shape well, not too dry or wet."
+          },
+          "additionalNotes": "No signs of unusual features."
+        }
+        
+        Only return valid JSON. Do not add explanation or commentary outside the JSON.
+        `,
         },
         {
           role: 'user',
