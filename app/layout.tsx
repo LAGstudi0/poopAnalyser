@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {
   title: 'AI Poop Analyzer 💩',
@@ -9,7 +10,6 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
 }
-
 
 export default function RootLayout({
   children,
@@ -23,7 +23,10 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#ffffff" />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   )
 }
