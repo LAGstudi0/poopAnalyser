@@ -2,10 +2,14 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  title: 'AI Poop Analyzer 💩',
+  description: 'Analyze your poop with AI using the Bristol Stool Chart. For fun, not medical advice!',
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
 }
+
 
 export default function RootLayout({
   children,
@@ -14,6 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <meta name="theme-color" content="#ffffff" />
+      </head>
       <body>{children}</body>
     </html>
   )
